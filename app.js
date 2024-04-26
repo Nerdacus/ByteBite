@@ -3,8 +3,13 @@ require("dotenv").config();
 const express = require("express");
 const expressLayout = require("express-ejs-layouts");
 
+const connectDB = require("./server/config/db");
+
 const app = express();
 const PORT = process.env.PORT || 5000;
+
+// Connection to the Database
+connectDB();
 
 app.use(express.static("public"));
 
@@ -19,6 +24,6 @@ const colorizeURL = (url) => `\x1b[35m${url}\x1b[0m`;
 
 // creates a link for the port when running the website.
 app.listen(PORT, () => {
-  const url = `http://localhost:${PORT}/`;
-  console.log(`App listening on: \n${colorizeURL(url)}`);
+  const url = `http://localhost:${PORT}/\n`;
+  console.log(`\nApp listening on: \n${colorizeURL(url)}`);
 });
