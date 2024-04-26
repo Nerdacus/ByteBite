@@ -1,20 +1,24 @@
-require('dotenv').config();
+require("dotenv").config();
 
-const express = require('express');
-const expressLayout = require('express-ejs-layouts');
+const express = require("express");
+const expressLayout = require("express-ejs-layouts");
 
 const app = express();
-const PORT = 5000 || process.env.PORT;
+const PORT = process.env.PORT || 5000;
 
-app.use(express.static('public'));
+app.use(express.static("public"));
 
-//Template engine
 app.use(expressLayout);
-app.set('layout', './layouts/main');
-app.set('view engine', 'ejs');
+app.set("layout", "./layouts/main");
+app.set("view engine", "ejs");
 
-app.use('/', require('./server/routes/main'));
+app.use("/", require("./server/routes/main"));
 
-app.listen(PORT, ()=> {
-    console.log(`App listening on port ${PORT}`);
+// Makes the url purple because why not. :)
+const colorizeURL = (url) => `\x1b[35m${url}\x1b[0m`;
+
+// creates a link for the port when running the website.
+app.listen(PORT, () => {
+  const url = `http://localhost:${PORT}/`;
+  console.log(`App listening on: \n${colorizeURL(url)}`);
 });
