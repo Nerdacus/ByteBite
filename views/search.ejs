@@ -1,0 +1,23 @@
+<div class="author">
+  <!-- Heading for the search results -->
+  <h1 class="author__heading">Search Results</h1>
+</div>
+
+<section class="articles">
+  <!-- Unordered list to display the search results -->
+  <ul class="article-ul">
+    <!-- Loop through each search result in the data array -->
+    <% data.forEach(post => { %>
+    <!-- List item for each search result -->
+    <li>
+      <!-- Link to view the full post -->
+      <a href="/post/<%= post._id %>">
+        <!-- Post title -->
+        <span><%= post.title %></span>
+        <!-- Post date -->
+        <span class="article-list__date"><%= post.createdAt.toDateString() %></span>
+      </a>
+    </li>
+    <% }) %>
+  </ul>
+</section>
