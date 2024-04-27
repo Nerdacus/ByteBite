@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Meta tags for character set, viewport, title, and description -->
+    <!-- Meta tags for character set, compatibility, and viewport -->
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Title and description from the locals object -->
     <title><%= locals.title %></title>
     <meta name="description" content="<%= locals.description %>" />
 
@@ -14,13 +17,10 @@
     <script type="text/javascript" defer src="/js/script.js"></script>
   </head>
   <body>
-    <!-- Include search partial -->
-    <%- include('../partials/search.ejs') %>
-
     <!-- Container to hold the entire content -->
     <div class="container">
       <!-- Include header partial -->
-      <%- include('../partials/header.ejs') %>
+      <%- include('../partials/header_admin.ejs') %>
 
       <!-- Main content area -->
       <main class="main"><%- body %></main>

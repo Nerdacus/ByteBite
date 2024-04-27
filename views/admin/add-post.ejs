@@ -1,0 +1,21 @@
+<!-- Link to go back to the dashboard -->
+<a href="/dashboard">&larr; Back</a>
+
+<!-- Admin title -->
+<div class="admin-title">
+  <h2>Add New Post</h2>
+</div>
+
+<!-- Form to add a new post -->
+<form action="/add-post" method="POST">
+  <!-- Input field for post title -->
+  <label for="title"><b>Title</b></label>
+  <input type="text" placeholder="Post Title" name="title" />
+
+  <!-- Text area for post content -->
+  <label for="body"><b>Content</b></label>
+  <textarea name="body" cols="50" rows="10"></textarea>
+
+  <!-- Submit button to add the post -->
+  <input type="submit" value="Add" class="btn" />
+</form>

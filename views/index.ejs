@@ -1,27 +1,39 @@
 <div class="author">
+  <!-- Heading for the authors section -->
   <h1 class="author__heading">Hello, we are the Cookie Connoisseurs</h1>
+
+  <!-- Body text for the authors section -->
   <p class="author__body">A group of students at SELU making it work.</p>
 </div>
 
+<!-- Hero image -->
 <img src="/img/home-screen.jpg" alt="person looking out through window" class="hero-image" width="981" height="528" />
 
 <section class="articles">
-  <h2 class="articles__heading">Latest Posts</h2>
+  <!-- Heading for the latest posts section -->
+  <h2 class="articles_heading">Latest Posts</h2>
 
+  <!-- Unordered list to display the latest posts -->
   <ul class="article-ul">
+    <!-- Loop through each post in the data array -->
+    <% data.forEach(post => { %>
+
+    <!-- List item for each post -->
     <li>
-      <a href="#">
-        <span>Post Title</span>
-        <span class="" article-list__date>Date</span>
+      <!-- Link to view the full post -->
+      <a href="/post/<%= post._id %>">
+        <!-- Post title -->
+        <span><%= post.title %></span>
+        <!-- Post date -->
+        <span class="article-list__date"><%= post.createdAt.toDateString() %></span>
       </a>
     </li>
-    <li>
-      <a href="#">
-        <span>Post Title</span>
-        <span class="" article-list__date>Date</span>
-      </a>
-    </li>
+
+    <% }) %>
   </ul>
 
-  <a href="#" class="pagination">&lt; View Older Posts</a>
+  <!-- Pagination link to view older posts if nextPage is not null -->
+  <% if (nextPage !== null) { %>
+  <a href="/?page=<%= nextPage %>" class="pagination">&lt; View Older Posts</a>
+  <% } %>
 </section>
