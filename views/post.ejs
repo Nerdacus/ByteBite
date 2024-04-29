@@ -9,21 +9,21 @@
 <h2>Comments</h2>
 <ul>
   <% data.comments.forEach((comment, index) => { %>
-    <li>
-      <%= comment %>
-      <!-- Form for deleting the comment -->
-      <form action="/deleteComment/<%= data._id %>" method="POST" style="display: inline;">
-        <!-- Hidden input to pass comment index -->
-        <input type="hidden" name="commentIndex" value="<%= index %>">
-        <button type="submit">Delete</button>
-      </form>
-    </li>
+  <li>
+    <%= comment %>
+    <!-- Form for deleting the comment -->
+    <form action="/deleteComment/<%= data._id %>" method="POST" style="display: inline">
+      <!-- Hidden input to pass comment index -->
+      <input type="hidden" name="commentIndex" value="<%= index %>" />
+      <button type="submit" style="font-size: 24px; padding: 10px; background-color: transparent; border: none; cursor: pointer" onmouseover="this.style.cursor='pointer'" onclick="alert('Don't cry!')">🍪</button>
+    </form>
+  </li>
   <% }) %>
 </ul>
 
 <!-- Form for adding a new comment -->
 <form action="/addComment/<%= data._id %>" method="POST">
   <label for="comment">Add a comment:</label>
-  <input type="text" id="comment" name="comment" required>
+  <input type="text" id="comment" name="comment" required />
   <button type="submit">Submit</button>
 </form>
