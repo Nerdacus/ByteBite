@@ -121,6 +121,32 @@ router.get("/about", (req, res) => {
 });
 
 /**
+ * POST /deleteComment/:id
+ * Delete comment from post
+ */
+router.post("/deleteComment/:id", async (req, res) => {
+  try {
+    const postId = req.params.id;
+    const { commentIndex } = req.body;
+
+    // Find the post by its ID
+    const post = await Post.findById(postId);
+
+    // Remove the comment from the comments array
+    post.comments.splice(commentIndex, 1);
+
+    // Save the updated post
+    await post.save();
+
+    // Redirect back to the post page after deleting the comment
+    res.redirect(`/post/${postId}`);
+  } catch (error) {
+    console.error('Error deleting comment:', error);
+    res.status(500).send('Error deleting comment');
+  }
+});
+
+/**
  * POST /
  * Post - searchTerm
  */

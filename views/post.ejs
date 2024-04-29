@@ -8,8 +8,16 @@
 <!-- Article comments -->
 <h2>Comments</h2>
 <ul>
-  <% data.comments.forEach(comment => { %>
-    <li><%= comment %></li>
+  <% data.comments.forEach((comment, index) => { %>
+    <li>
+      <%= comment %>
+      <!-- Form for deleting the comment -->
+      <form action="/deleteComment/<%= data._id %>" method="POST" style="display: inline;">
+        <!-- Hidden input to pass comment index -->
+        <input type="hidden" name="commentIndex" value="<%= index %>">
+        <button type="submit">Delete</button>
+      </form>
+    </li>
   <% }) %>
 </ul>
 
