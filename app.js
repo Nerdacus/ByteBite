@@ -46,8 +46,8 @@ app.locals.isActiveRoute = isActiveRoute;
 // Makes the url purple because why not. :)
 const colorizeURL = (url) => `\x1b[35m${url}\x1b[0m`;
 
-app.use("/", require("./server/routes/main"));
-app.use("/", require("./server/routes/admin"));
+app.use("/", require("./server/routes/main-controller"));
+app.use("/", require("./server/routes/admin-controller"));
 
 app.listen(PORT, () => {
   const url = `http://localhost:${PORT}/\n`;

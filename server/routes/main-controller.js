@@ -111,8 +111,8 @@ router.post("/addComment/:id", async (req, res) => {
     // Redirect back to the post page after adding the comment
     res.redirect(`/post/${postId}`);
   } catch (error) {
-    console.error('Error adding comment:', error);
-    res.status(500).send('Error adding comment');
+    console.error("Error adding comment:", error);
+    res.status(500).send("Error adding comment");
   }
 });
 
@@ -141,8 +141,8 @@ router.post("/deleteComment/:id", async (req, res) => {
     // Redirect back to the post page after deleting the comment
     res.redirect(`/post/${postId}`);
   } catch (error) {
-    console.error('Error deleting comment:', error);
-    res.status(500).send('Error deleting comment');
+    console.error("Error deleting comment:", error);
+    res.status(500).send("Error deleting comment");
   }
 });
 
