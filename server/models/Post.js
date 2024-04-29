@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
 
-// This is the format for our mongo database to follow for a certain collection
-const Schema = mongoose.Schema;
+const { Schema, Types } = mongoose;
+const { ObjectId } = Types;
+
 const PostSchema = new Schema({
   title: {
     type: String,
@@ -18,6 +19,10 @@ const PostSchema = new Schema({
   updatedAt: {
     type: Date,
     default: Date.now,
+  },
+  comments: {
+    type: [String],
+    default: [],
   },
 });
 
