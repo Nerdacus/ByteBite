@@ -2,6 +2,28 @@ const express = require("express");
 const router = express.Router();
 const Post = require("../models/Post");
 
+// Define the Subject class
+class CommentSubject {
+  constructor() {
+    this.observers = [];
+  }
+
+  addObserver(observer) {
+    this.observers.push(observer);
+  }
+
+  removeObserver(observer) {
+    this.observers = this.observers.filter((obs) => obs !== observer);
+  }
+
+  notifyObservers(postId) {
+    this.observers.forEach((observer) => observer.notify(postId));
+  }
+}
+
+// Create an instance of the Subject
+const commentSubject = new CommentSubject();
+
 //Routes
 
 /**
@@ -108,6 +130,12 @@ router.post("/addComment/:id", async (req, res) => {
     // Save the updated post
     await post.save();
 
+    // Notify observers of the new comment
+    commentSubject.notifyObservers(postId);
+
+    // Debug statement to check if the notifyObservers method is being called
+    console.log("Notified observers of new comment");
+
     // Redirect back to the post page after adding the comment
     res.redirect(`/post/${postId}`);
   } catch (error) {
@@ -115,6 +143,22 @@ router.post("/addComment/:id", async (req, res) => {
     res.status(500).send("Error adding comment");
   }
 });
+
+// Define the Observer class
+class NewCommentObserver {
+  constructor() {}
+
+  notify(postId) {
+    console.log(`New comment added to post ${postId}`);
+    // You can implement other actions here, such as sending notifications to users
+  }
+}
+
+// Create an instance of the Observer
+const newCommentObserver = new NewCommentObserver();
+
+// Add the observer to the subject
+commentSubject.addObserver(newCommentObserver);
 
 router.get("/about", (req, res) => {
   res.render("about");
