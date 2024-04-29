@@ -4,5 +4,18 @@
 <!-- Article content -->
 <article class="article"><%= data.body %></article>
 <br />
-<!-- Article comments-->
-<article class="article"><%= data.comments%></article>
+
+<!-- Article comments -->
+<h2>Comments</h2>
+<ul>
+  <% data.comments.forEach(comment => { %>
+    <li><%= comment %></li>
+  <% }) %>
+</ul>
+
+<!-- Form for adding a new comment -->
+<form action="/addComment/<%= data._id %>" method="POST">
+  <label for="comment">Add a comment:</label>
+  <input type="text" id="comment" name="comment" required>
+  <button type="submit">Submit</button>
+</form>

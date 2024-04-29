@@ -90,6 +90,32 @@ router.get("/post/:id", async (req, res) => {
   }
 });
 
+/**
+ * POST /addComment/:id
+ * Add comment to post
+ */
+router.post("/addComment/:id", async (req, res) => {
+  try {
+    const postId = req.params.id;
+    const { comment } = req.body;
+
+    // Find the post by its ID
+    const post = await Post.findById(postId);
+
+    // Add the comment to the comments array
+    post.comments.push(comment);
+
+    // Save the updated post
+    await post.save();
+
+    // Redirect back to the post page after adding the comment
+    res.redirect(`/post/${postId}`);
+  } catch (error) {
+    console.error('Error adding comment:', error);
+    res.status(500).send('Error adding comment');
+  }
+});
+
 router.get("/about", (req, res) => {
   res.render("about");
 });
