@@ -8,12 +8,12 @@ const connectDB = async () => {
       mongoose.set("strictQuery", false);
       const conn = await mongoose.connect(process.env.MONGODB_URI);
 
-      // Log the connection in the database
+      //Connection doesn't exist
       console.log(`Database Connected: ${conn.connection.host}`);
 
       isConnected = true;
     } else {
-      // Print a message indicating that the connection already exists
+      //Connection exists
       console.log("Database connection already established.");
     }
   } catch (error) {
