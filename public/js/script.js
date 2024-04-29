@@ -1,24 +1,77 @@
+// Define the Subject
+class SearchBarSubject {
+  constructor() {
+    this.observers = [];
+  }
+
+  addObserver(observer) {
+    this.observers.push(observer);
+  }
+
+  removeObserver(observer) {
+    this.observers = this.observers.filter((obs) => obs !== observer);
+  }
+
+  notifyObservers() {
+    this.observers.forEach((observer) => observer.update());
+  }
+
+  // Method to trigger an event
+  triggerEvent() {
+    this.notifyObservers();
+  }
+}
+
+// Define the Observer
+class SearchBarObserver {
+  constructor(searchBar, searchInput, searchClose) {
+    this.searchBar = searchBar;
+    this.searchInput = searchInput;
+    this.searchClose = searchClose;
+  }
+
+  update() {
+    // Toggle visibility and focus on input
+    if (this.searchBar.classList.contains("open")) {
+      this.searchBar.style.visibility = "hidden";
+      this.searchBar.classList.remove("open");
+      this.searchClose.setAttribute("aria-expanded", "false");
+    } else {
+      this.searchBar.style.visibility = "visible";
+      this.searchBar.classList.add("open");
+      this.searchClose.setAttribute("aria-expanded", "true");
+      this.searchInput.focus();
+    }
+  }
+}
+
+// Create Subject instance
+const searchBarSubject = new SearchBarSubject();
+
+// Get DOM elements
+const searchBar = document.querySelector(".searchBar");
+const searchInput = document.getElementById("searchInput");
+const searchClose = document.getElementById("searchClose");
+
+// Create Observer instance
+const searchBarObserver = new SearchBarObserver(searchBar, searchInput, searchClose);
+
+// Add Observer to Subject
+searchBarSubject.addObserver(searchBarObserver);
+
+// Attach EventListeners using Observer pattern
 document.addEventListener("DOMContentLoaded", function () {
   const allButtons = document.querySelectorAll(".searchBtn");
-  const searchBar = document.querySelector(".searchBar");
-  const searchInput = document.getElementById("searchInput");
-  const searchClose = document.getElementById("searchClose");
 
-  // attaches an EventListener to all buttons.
-  // Possible implementation of the singleton???
-  for (var i = 0; i < allButtons.length; i++) {
+  for (let i = 0; i < allButtons.length; i++) {
     allButtons[i].addEventListener("click", function () {
-      searchBar.style.visibility = "visible";
-      searchBar.classList.add("open");
-      this.setAttribute("aria-expanded", "true");
-      searchInput.focus();
+      // Trigger event when button is clicked
+      searchBarSubject.triggerEvent();
     });
   }
 
-  // fucntionality for the close button on the search bar
   searchClose.addEventListener("click", function () {
-    searchBar.style.visibility = "hidden";
-    searchBar.classList.remove("open");
-    this.setAttribute("aria-expanded", "false");
+    // Trigger event when close button is clicked
+    searchBarSubject.triggerEvent();
   });
 });
