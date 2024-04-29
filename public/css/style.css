@@ -6,6 +6,7 @@
   --light-gray: #e4e4e4;
   --red: #b30000;
   --white: #faf5ee;
+  --blue: #02426e;
 
   --font-size-base: 1rem;
   --font-size-md: clamp(1.25rem, 0.61vw + 1.1rem, 1.58rem);
@@ -53,7 +54,7 @@ textarea {
 }
 
 .btn {
-  background-color: var(--white);
+  background-color: var(--blue);
   border: none;
   color: black;
   padding: 16px 32px;
