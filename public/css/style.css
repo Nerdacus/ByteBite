@@ -308,7 +308,7 @@ img {
 .searchBar {
   visibility: hidden;
   transform: translateY(-100px);
-  background-color: var(--white);
+  background-color: var(--blue);
   padding: 4px 0;
   position: absolute;
   left: 0;
