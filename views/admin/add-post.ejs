@@ -1,21 +1,89 @@
-<!-- Link to go back to the dashboard -->
-<a href="/dashboard">&larr; Back</a>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add New Post</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+      }
+      .admin-title {
+        background-color: #fff;
+        border: 2px solid #007bff;
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
+      }
+      .admin-title h2 {
+        margin: 0;
+        color: #333;
+      }
+      .btn {
+        padding: 8px 15px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        text-decoration: none;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      .btn:hover {
+        background-color: #0056b3;
+      }
+      form {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        width: 500px;
+        margin: 0 auto;
+      }
+      label {
+        display: block;
+        margin-bottom: 5px;
+        color: #333;
+      }
+      input[type="text"],
+      textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Link to go back to the dashboard -->
+    <a href="/dashboard">&larr; Back</a>
 
-<!-- Admin title -->
-<div class="admin-title">
-  <h2>Add New Post</h2>
-</div>
+    <!-- Admin title -->
+    <div class="admin-title">
+      <h2>Add New Post</h2>
+    </div>
 
-<!-- Form to add a new post -->
-<form action="/add-post" method="POST">
-  <!-- Input field for post title -->
-  <label for="title"><b>Title</b></label>
-  <input type="text" placeholder="Post Title" name="title" />
+    <!-- Form to add a new post -->
+    <form action="/add-post" method="POST">
+      <!-- Input field for post title -->
+      <label for="title"><b>Title</b></label>
+      <input type="text" placeholder="Post Title" name="title" />
 
-  <!-- Text area for post content -->
-  <label for="body"><b>Content</b></label>
-  <textarea name="body" cols="50" rows="10"></textarea>
+      <!-- Text area for post content -->
+      <label for="body"><b>Content</b></label>
+      <textarea name="body" cols="50" rows="10"></textarea>
 
-  <!-- Submit button to add the post -->
-  <input type="submit" value="Add" class="btn" />
-</form>
+      <!-- Submit button to add the post -->
+      <input type="submit" value="Add" class="btn" />
+    </form>
+  </body>
+</html>
