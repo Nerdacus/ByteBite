@@ -1,29 +1,116 @@
-<!-- Sign In Form -->
-<h3>Sign In</h3>
-<form action="/admin" method="POST">
-  <!-- Input field for username -->
-  <label for="username"><b>Username</b></label>
-  <input type="text" placeholder="Enter Username" name="username" />
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login and Registration</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        padding-top: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .header-container {
+        background-color: #fff; /* White background for the header */
+        border: 2px solid #007bff; /* Border for the header */
+        border-radius: 8px; /* Rounded corners */
+        padding: 20px; /* Padding inside the header */
+        margin-bottom: 30px; /* Spacing between header and forms */
+        display: flex;
+        justify-content: space-between; /* Spacing between items */
+        align-items: center; /* Center items vertically */
+        margin-top: 20px; /* Space between header and top of the page */
+      }
+      .header-item {
+        margin: 0 10px; /* Spacing between header items */
+        color: #000; /* Black text color */
+      }
+      form {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        width: 300px;
+      }
+      h3 {
+        margin-top: 0;
+        color: #333;
+        text-align: center;
+      }
+      label {
+        display: block;
+        margin-bottom: 5px;
+        color: #666;
+      }
+      input[type="text"],
+      input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+      input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 4px;
+        background-color: #007bff;
+        color: #fff;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      input[type="submit"]:hover {
+        background-color: #0056b3;
+      }
+      .bottom-card {
+        margin-top: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Sign In Form -->
+      <form action="/admin" method="POST">
+        <h3>Sign In</h3>
+        <!-- Input field for username -->
+        <label for="username">Username</label>
+        <input type="text" placeholder="Enter Username" name="username" />
 
-  <!-- Input field for password -->
-  <label for="password"><b>Password</b></label>
-  <input type="password" placeholder="Enter Password" name="password" />
+        <!-- Input field for password -->
+        <label for="password">Password</label>
+        <input type="password" placeholder="Enter Password" name="password" />
 
-  <!-- Submit button for login -->
-  <input type="submit" value="Login" class="btn" />
-</form>
+        <!-- Submit button for login -->
+        <input type="submit" value="Login" />
+      </form>
 
-<!-- Registration Form -->
-<h3>Register</h3>
-<form action="/register" method="POST">
-  <!-- Input field for username -->
-  <label for="username"><b>Username</b></label>
-  <input type="text" placeholder="Enter Username" name="username" />
+      <!-- Registration Form -->
+      <form action="/register" method="POST" class="bottom-card">
+        <h3>Register</h3>
+        <!-- Input field for username -->
+        <label for="username">Username</label>
+        <input type="text" placeholder="Enter Username" name="username" />
 
-  <!-- Input field for password -->
-  <label for="password"><b>Password</b></label>
-  <input type="password" placeholder="Enter Password" name="password" />
+        <!-- Input field for password -->
+        <label for="password">Password</label>
+        <input type="password" placeholder="Enter Password" name="password" />
 
-  <!-- Submit button for registration -->
-  <input type="submit" value="Register" class="btn" />
-</form>
+        <!-- Submit button for registration -->
+        <input type="submit" value="Register" />
+      </form>
+    </div>
+  </body>
+</html>
