@@ -34,7 +34,7 @@ const commentSubject = new CommentSubject();
 router.get("", async (req, res) => {
   try {
     const locals = {
-      title: "NodeJs Blog",
+      title: "ByteBite",
       description: "Simple Blog created with NodeJs, Express & MongoDb.",
     };
 
