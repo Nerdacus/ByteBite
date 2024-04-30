@@ -13,11 +13,13 @@ class SearchBarSubject {
   }
 
   notifyObservers() {
+    console.log("Subject: Notifying observers...");
     this.observers.forEach((observer) => observer.update());
   }
 
   // Method to trigger an event
   triggerEvent() {
+    console.log("Subject: Triggering event...");
     this.notifyObservers();
   }
 }
@@ -31,6 +33,7 @@ class SearchBarObserver {
   }
 
   update() {
+    console.log("Observer: Updating...");
     // Toggle visibility and focus on input
     if (this.searchBar.classList.contains("open")) {
       this.searchBar.style.visibility = "hidden";
@@ -65,12 +68,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   for (let i = 0; i < allButtons.length; i++) {
     allButtons[i].addEventListener("click", function () {
+      console.log("Button clicked.");
       // Trigger event when button is clicked
       searchBarSubject.triggerEvent();
     });
   }
 
   searchClose.addEventListener("click", function () {
+    console.log("Close button clicked.");
     // Trigger event when close button is clicked
     searchBarSubject.triggerEvent();
   });
